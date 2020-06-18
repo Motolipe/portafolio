@@ -16,6 +16,7 @@
       <div align="center" *ngIf="productosService.cargando">
 
         <h2>Cargando...</h2>
+
         <div class="loader loader--style1" title="0">
           <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
           width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
@@ -42,11 +43,12 @@
       
 
       
-      <div *ngIf="!productosService.cargando" class="ae-masonry ae-masonry-md-2 ae-masonry-xl-4">
+      <div *ngIf="!productosService.cargando" 
+      class="ae-masonry ae-masonry-md-2 ae-masonry-xl-4">
         <a *ngFor="let producto of productosService.producto" 
-        routerLink='/about' class="animated fadeIn rk-item ae-masonry__item">
+        [routerLink]="['/item',producto.cod]" class="animated fadeIn rk-item ae-masonry__item">
         <img src="assets/productos/{{ producto.url }}.jpg" alt="">
-          <div class="item-meta">
+          <div [routerLink]="['/item', producto.cod ]" class="item-meta">
             <h2>{{ producto.titulo }}</h2>
             <p>{{ producto.categoria }}</p>
           </div>
